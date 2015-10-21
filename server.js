@@ -1,12 +1,12 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let express = require('express');
-let app = express();
+const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
 
 mongoose.connect('mongodb://localhost/todo');
 
-let Todo = mongoose.model('Todo', {title: String});
+const Todo = mongoose.model('Todo', {title: String});
 
 app.set('view engine', 'jade');
 app.use(require('body-parser').json());
@@ -25,7 +25,7 @@ app.get('/api/todos', function (req, res, next) {
 });
 
 app.post('/api/todos', function (req, res, next) {
-  let todo = new Todo({title: req.body.title});
+  var todo = new Todo({title: req.body.title});
   todo.save(function (err) {
     if (err) return next(err);
     res.sendStatus(201);
