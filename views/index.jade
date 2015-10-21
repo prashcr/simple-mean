@@ -1,0 +1,16 @@
+doctype html
+html(lang='en', ng-app='app')
+  head
+    meta(charset='UTF-8')
+    title simple-mean
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js')
+    script(src='/scripts/app.js')
+  body
+    div(ng-controller='TodoCtrl')
+      h1 Todos
+      ul
+        li(ng-repeat='todo in todos') {{todo.title}}&nbsp;
+          button(ng-click='remove(todo)') X
+      form(ng-submit='addTodo()')
+        input(ng-model='newTodo.title')
+        input(type='submit', value='Add')
