@@ -44,3 +44,4 @@ app.delete('/api/todos/:id', function (req, res, next) {
 // listen on $PORT or 3000
 // this makes the app work on heroku
 app.listen(process.env.port || 3000);
+console.log(`Server started at localhost:${process.env.port || 3000}`)
