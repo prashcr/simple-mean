@@ -11,14 +11,14 @@ angular.module('app')
   .controller('TodoCtrl', function ($scope, TodoSvc) {
     $scope.todos = [{title: 'Get paper'}, {title: 'Mail rent check'}];
 
-    $scope.refresh = function() {
+    $scope.refresh = function () {
       TodoSvc.fetch()
       .then(function (todos) {
         $scope.todos = todos.data;
       });
     };
 
-    $scope.remove = function(todo) {
+    $scope.remove = function (todo) {
       TodoSvc.remove(todo)
       .then(function () {
         $scope.refresh();
@@ -31,7 +31,7 @@ angular.module('app')
         $scope.newTodo = {};
         $scope.refresh();
       });
-    }
+    };
 
     $scope.refresh();
   });

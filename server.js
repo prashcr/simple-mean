@@ -12,7 +12,7 @@ app.set('view engine', 'jade');
 app.use(require('body-parser').json());
 app.use(express.static('public'));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.render('index');
 });
 
@@ -44,4 +44,4 @@ app.delete('/api/todos/:id', function (req, res, next) {
 // listen on $PORT or 3000
 // this makes the app work on heroku
 app.listen(process.env.port || 3000);
-console.log(`Server started at localhost:${process.env.port || 3000}`)
+console.log(`Server started at localhost:${process.env.port || 3000}`);
