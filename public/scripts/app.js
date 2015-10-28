@@ -3,6 +3,11 @@
 angular.module('app', []);
 
 angular.module('app')
+  .config(function ($locationProvider) {
+    $locationProvider.html5Mode({enabled: true, requireBase: false});
+  });
+
+angular.module('app')
   .controller('TodoCtrl', function ($scope, TodoSvc) {
     $scope.todos = [{title: 'Get paper'}, {title: 'Mail rent check'}];
 
@@ -31,17 +36,17 @@ angular.module('app')
     $scope.refresh();
   });
 
-  angular.module('app')
-    .service('TodoSvc', function ($http) {
-      this.fetch = function() {
-        return $http.get('/api/todos');
-      };
+angular.module('app')
+  .service('TodoSvc', function ($http, $location) {
+    this.fetch = function () {
+      return $http.get(`${$location.path()}api/todos`);
+    };
 
-      this.add = function(todo) {
-        return $http.post('/api/todos', todo);
-      };
+    this.add = function (todo) {
+      return $http.post(`${$location.path()}api/todos`, todo);
+    };
 
-      this.remove = function(todo) {
-        return $http.delete(`/api/todos/${todo._id}`);
-      };
-    });
+    this.remove = function (todo) {
+      return $http.delete(`${$location.path()}api/todos/${todo._id}`);
+    };
+  });
